@@ -1,0 +1,874 @@
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>Humanitarian Aid Simulation</title>
+    <meta name="description" content="The HTML5 Herald">
+    <meta name="Iram Sharieff" content="SitePoint">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    {{! <link rel="stylesheet" href=""> }}
+    <link rel="stylesheet" href="css/gameStyle.css">
+    <script src="js/jquery-3.5.1.min.js"></script>
+    <script src="js/script.js"></script>
+
+</head>
+
+<body>
+    <div class=" simulationHeader">
+        <!-- <img src="images/humaniTent-logo.png" height="100" width="150">
+        <span>
+        </span> -->
+    </div>
+    <div class="container gameBody">
+        <div class="hidden help front">
+            <div id="helpHeader">
+                Scenario: Breast cancer intervention plan for Syrian and Iraqi refugee women in Beirut,
+                Lebanon
+            </div>
+            <hr id="iconBar">
+            <span class="boldTxt">Setting: </span>Beirut district refugee camps, Lebanon<br>
+            <span class="boldTxt">Primary hospital: </span>Rafic Hariri University Hospital, Beirut, Lebanon
+            <img class="icon" id="arrow" src="images/arrow.png" alt="right arrow">
+        </div>
+        <div class="hidden help back">
+            <span class="hidden" id="helpText">
+                <h2>Scenario Context</h2><br>
+                <p>You are a recent graduate from the Yale School of Public Health. You work as a Program Coordinator
+                    for End Cancer Now, a global health NGO headquartered in NYC. End Cancer Now has been invited by the
+                   Lebanese Ministry of Public Health (MOPH) to help
+                    develop an intervention to address the breast
+                    cancer burden among Syrian and Iraqi refugee women in Lebanese refugee camps. End Cancer Now has
+                    international recognition, wide ranging infrastructure and capacity, extensive funding, and a
+                    sizable labor force of physicians, humanitarian workers, epidemiologists, and more.
+
+                    <br><br>You have been asked to develop and sustain this intervention over a two-year timeline.
+                    You have been asked to work specifically with Syrian and Iraqi refugee women in refugee camps in the
+                    Beirut governorate. </p>
+            </span>
+        </div>
+        <div class="hidden choiceAnalysis">
+            <div class="noteWrapper">
+                <div class="closeIcon">
+                    <img src="images/close-icon.png" alt="close" width="25px" height="25px">
+                    <div class="centerText">
+                        In the process of making your decision, did you consider the following?
+                    </div>
+                </div>
+                <hr class="iconBar">
+            </div>
+            <div class="hidden" id="n1">
+                <ul>
+                    <li>Point #1.1</li>
+                    <li>Point #1.2</li>
+                    <li>Point #1.3</li>
+                </ul>
+            </div>
+            <div class="hidden" id="n2">
+                <ul>
+                    <li>Point #2.1</li>
+                    <li>Point #2.2</li>
+                    <li>Point #2.3</li>
+                </ul>
+            </div>
+        </div>
+        <div class="popupBox">
+            <div class="hidden" id="pop-up1">
+                Sample pop-up
+            </div>
+            <div class="hidden" id="pop-up2">
+                Sample pop-up #2
+            </div>
+            <div class="hidden" id="pop-up3">
+                Sample pop-up #3
+            </div>
+            <div class="hidden" id="pop-up4">
+                Sample pop-up #4
+            </div>
+        </div>
+        <div id="gameHeader">
+            <span id="gameTitle">{{global.title}}</span>
+        </div>
+        <div class="displayMessage">
+            <div class="hidden clue">
+                <div id="clue-0">
+                    <div class="boldText" id="clueHeader">
+                        Welcome
+                    </div>
+                    <hr id="iconBar">
+                    <div>Click me throughout the simulation for additional clues</div>
+                </div>
+                <div class="hidden" id="clue-1">
+                    <div class="boldText" id="clueHeader">
+                        Clue #1
+                    </div>
+                    <hr id="iconBar">
+                    <div>Consult the following reflection by Shioiri-Clark, a design innovation manager for
+                        International Rescue
+                        Committee (IRC), on technological interventions in refugee settings:
+                        <br><br>
+                        <a href="https://medium.com/airbel/7-design-principles-of-using-technology-to-reach-syrian-refugee-families-55ef7313ae47"
+                            target="_blank"><img class="imageLink" src="images/design-principles.png"
+                                alt="children learning alphabet" width="250px" height="125px"> </a>
+                    </div>
+                </div>
+                <div class="hidden" id="clue-2">
+                    <div class="boldText" id="clueHeader">
+                        Clue #2
+                    </div>
+                    <hr id="iconBar">
+                    <div>Consult the following article to guide your decisions:
+                        <br><br>
+                        <a href="https://ascopubs.org/doi/pdf/10.1200/EDBK_279693" target="_blank"><img
+                                class="imageLink" src="images/newspaper-logo.png" alt="newspaper-logo" width="150px"
+                                height="200px"> </a>
+                    </div>
+                </div>
+                <div class="hidden" id="defaultClue">
+                    <div class="boldText" id="clueHeader">
+                        No clues for this question...
+                    </div>
+                    <hr id="iconBar">
+                    
+                </div>
+            </div>
+            <div class="introMessage">
+                {{{page.introMessage.message}}}
+                <h2>Scenario Context</h2><br>
+                <p>You are a recent graduate from the Yale School of Public Health. You work as a Program Coordinator
+                    for End Cancer Now, a global health NGO headquartered in NYC. End Cancer Now has been invited by the
+                    <span class="popupText boldTxt" id="p1">Lebanese Ministry of Public Health (MOPH)</span> to help
+                    develop an intervention to address the breast
+                    cancer burden among Syrian and Iraqi refugee women in Lebanese refugee camps. End Cancer Now has
+                    international recognition, wide ranging infrastructure and capacity, extensive funding, and a
+                    sizable labor force of physicians, humanitarian workers, epidemiologists, and more.
+
+                    <br><br>You have been asked to develop and sustain this intervention over a two-year timeline. You
+                    have been asked to work specifically with Syrian and Iraqi refugee women in refugee camps in the
+                    <span class="popupText boldTxt" id="p2">Beirut governorate.</span> </p>
+            </div>
+        </div>
+        <div class="bottomBar">
+            <img class="icon" id="helpIcon" src="images/help-icon.png" alt="help icon">
+            <img class="icon" id="bookIcon" src="images/open-book.png" alt="book icon">
+            <button class="btn" id="startButton">Start Simulation</button>
+            <!-- Additional Elements that will appear on actions -->
+            <form action="/user" method="post">
+                <input type="submit" value= "Finish Simulation" class="hidden btn" id="btn-finish"></input>
+            </form>
+
+            <button class="hidden actionButton" id="continueButton">Continue...</button>
+            <div class="submitAndPrev">
+                <button class="hidden actionButton" id="prevButton">Go Back</button>
+                <button class="hidden actionButton" id="submitButton">Submit</button>
+            </div>
+        </div>
+        <!-- Question #1 -->
+        <div class="hidden" id="q1">
+            As program coordinator, your first task is to work with key local stakeholders in this intervention. Select
+            the primary agencies you will work with to begin designing an intervention strategy.
+        </div>
+        <!-- Options for Question #1 -->
+        <div class="hidden option" id="a1">
+            <div class="optionBoxes">a</div>
+            <p>You decide to work primarily with the <span class="popupText boldTxt" id="p3">UNHCR and the Ministry of
+                    Public
+                    Health.</span> You will work closely with health professionals and epidemiologists from the
+                AUB-Global Health
+                Institute and Lebanese Breast Cancer Foundation, interpreters/translators, and community leaders.</p>
+        </div>
+        <div class="hidden option" id="b1">
+            <div class="optionBoxes">b</div>
+            <p>
+                You decide to work primarily with the <span class="popupText boldTxt" id="p4">WHO and the Ministry of
+                    Public
+                    Health.</span> You will bring in expert epidemiologists from your own NGO, who will communicate with
+                Ministry
+                personnel to assess the situation.
+            </p>
+        </div>
+
+        <!-- Question #2 -->
+        <div class="hidden" id="q2">
+            <p>Now that you are meeting with your stakeholders, you must finalize your intervention’s objectives.
+                However, your stakeholders have different goals: </p><br>
+            <li>The UNHCR representative cites a 83% budget deficit and supports funding for only an awareness and
+                education campaign about self-examination</li>
+            <li>The Ministry wants quantifiable metrics: they want to offer a service, such as subsidized chemotherapy
+                for life-threatening cases or the purchase of new screening capacity.</li>
+            <li>An epidemiologist from the American University of Beirut (AUB), a significant and highly credible global
+                health organization in Lebanon, has offered to consult you and suggests that a needs assessment survey
+                to be done before proceeding.</li>
+            <br>
+            <p class="boldText">What is your next step?</p>
+            </p>
+        </div>
+        <!-- Option Choices for Question #2 -->
+        <div class="hidden option" id="a2">
+            <div class="optionBoxes">a</div>You go with the epidemiologist’s suggestion to conduct a cancer care needs
+            assessment of the refugee camp environment first. <br><br>
+        </div>
+        <div class="hidden option" id="b2">
+            <div class="optionBoxes">b</div>You go with the epidemiologist’s suggestion to conduct a cancer care needs
+            assessment of the refugee camp environment first. You go with the epidemiologist’s suggestion to conduct a
+            cancer care needs assessment of the refugee camp environment first. <br><br>
+        </div>
+        <div class="hidden option" id="c2">
+            <div class="optionBoxes">c</div>You support the Ministry’s objective to purchase new screening technology
+            and select a limited number of life-threatening cases of refugee women and to provide them with emergency
+            care.<br>
+        </div>
+
+        <!-- Question #3 -->
+        <div class="hidden" id="q3">
+            With UNHCR and local epidemiologists, you conduct a needs assessment of a local refugee camp and find that
+            most Syrian and Iraqi women (1) did not understand the risks of breast cancer, (2) did not know how to
+            self-examine themselves for signs of breast cancer, and (3) did not know that inexpensive screening and
+            treatment options could exist that they could access through the UNHCR or the Ministry. <br><br>
+            <p class="boldText">What is your next step?</p>
+        </div>
+        <!-- Option Choices for Question #3 -->
+        <div class="hidden option" id="a3">
+            <div class="optionBoxes">a</div>You decide to conduct a three part intervention: one, an awareness campaign
+            to inform refugee women about breast cancer; two, educational sessions with local physicians informing
+            refugee women about self-examination and opportunities for early screening; three, negotiate with the UNHCR
+            and the Ministry to fund free yearly screening or early detection for refugee women over 35. <br><br>
+        </div>
+        <div class="hidden option" id="b3">
+            <div class="optionBoxes">b</div>You decide to focus your resources on directly providing educational
+            sessions to Syrian and Iraqi women on breast cancer self-examination. <br><br>
+        </div>
+        <div class="hidden option" id="c3">
+            <div class="optionBoxes">c</div>You follow the Ministry’s suggestion to allocate your funding to provide
+            chemotherapy and other necessary care only for women with life-threatening symptoms.<br>
+        </div>
+
+        <!-- Question #4 -->
+        <div class="hidden" id="q4">
+            Now that you have settled on your intervention objectives, your next step is to develop an awareness
+            campaign so that refugee women will volunteer to attend the educational sessions with physicians. You are
+            inspired by the widely successful <a
+                href="http://www.emro.who.int/lbn/lebanon-events/on-8-october-2017-the-first-lady-mrs-nadia-al-chami-aoun-and-the-minister-of-public-health-mr-ghassan-hasbany-launched-the-2017-national-campaign-for-breast-cancer-awareness-organiz.html"
+                target="_blank">WHO Lebanon “Kick Breast Cancer” campaign</a>, which brought together a diverse and
+            comprehensive coalition of participating groups and techniques for delivery materials. You will advertise
+            breast cancer awareness materials on posters and brochures in the refugee camps. However, you also want to
+            incorporate Arabic videos explaining the risks of breast cancer and next steps for women, which would be
+            very useful. <br><br>
+            <p class="boldText">Consider the usability of different technological devices and forums for a refugee camp
+                environment. What delivery vehicle would be the best to spread your awareness campaign?</p>
+        </div>
+        <!-- Option Choices for Question #3 -->
+        <div class="hidden option" id="a4">
+            <div class="optionBoxes">a</div>TVs and radio: You expect that advertising your videos on TV channels and on
+            live radio will be the most effective means of reaching families.<br><br>
+        </div>
+        <div class="hidden option" id="b4">
+            <div class="optionBoxes">b</div>WhatsApp and Facebook: You predict the most accessible method for families
+            to receive educational materials directly on their phones.
+            <br><br>
+        </div>
+        <div class="hidden option" id="c4">
+            <div class="optionBoxes">c</div>App: you want to design a convenient smartphone application that will allow
+            refugee families to access any of the information and videos they want to see in private, at their
+            luxury<br>
+        </div>
+
+        <!-- Question #5 -->
+        <div class="hidden" id="q5">
+            When testing the educational videos in a focus group, you find that many women are uncomfortable with a
+            doctor publicly talking about breast cancer, self-examination, and related topics. You approach a UNHCR
+            translator and interpreter who has worked extensively in settlements for help. She suggests that the videos
+            of health professionals talking about breast cancer and self-examination may have come off offensive to more
+            traditional or conservative families. Breast cancer is still a topic that is not talked about often.<br><br>
+            <p class="boldText">Given the sensitive sociocultural nature of the content of your awareness campaign, what
+                could you do to make your message resonate better with refugee women?</p>
+        </div>
+        <!-- Option Choices for Question #5 -->
+        <div class="hidden option" id="a5">
+            <div class="optionBoxes">a</div>Create a new video, this time including a local Lebanese politician in
+            communication with an oncologist from your NGO, talking about the benefits of breast cancer awareness and
+            the new intervention.<br><br>
+        </div>
+        <div class="hidden option" id="b5">
+            <div class="optionBoxes">b</div>Create an additional video, this time including a local cultural leader or
+            Sheikh, who explains the importance of understanding the risks of breast cancer and how self-examination can
+            save lives.
+            <br><br>
+        </div>
+
+        <!-- Question #6 -->
+        <div class="hidden" id="q6">
+            After running a robust awareness campaign, sending videos with health professionals explaining the
+            importance of breast cancer to WhatsApp group chats, and reaching almost 80% of the target demographic, it
+            is time to implement the educational sessions. However, when you check how many refugee women signed up to
+            attend your organized sessions, you see that less than 40% of your target demographic actually registered.
+            Why might that be? <br><br>
+            A local interpreter says it is because the Syrian and Iraqi women do not believe that breast cancer poses a
+            significant burden. Most of them don’t know anyone who had breast cancer and they don’t see the videos or
+            the campaign as particularly relevant. You want to make the risks of breast cancer more relatable to refugee
+            women. A local NGO worker recommends that you share the stories of other Syrian and Iraqi women who survived
+            breast cancer.
+        </div>
+        <!-- Option Choices for Question #6 -->
+        <div class="hidden option" id="a6">
+            In a reflection post, consider the following: what are some ethical considerations with approaching and
+            inviting refugee women to participate in videos about their survivorship stories. <br><br>
+        </div>
+
+        <!-- Question #7 -->
+        <div class="hidden" id="q7">
+            Your awareness campaign was successful and you were able to get a significant number of Syrian and Iraqi
+            refugee women to sign up for educational sessions! The next stage of the intervention is coordinating
+            educational sessions to inform Syrian and Iraqi refugee women about breast self-examination and cancer
+            risks. You must create a team of physicians to deliver these education sessions to refugee women. <br><br>
+            <p class="boldText">How do you choose to create your teams for the education sessions?</p>
+        </div>
+        <!-- Option Choices for Question #7 -->
+        <div class="hidden option" id="a7">
+            <div class="optionBoxes">a</div>You decide to put together a team of local physicians from the Rafic Hariri
+            Hospital and the American University of Beirut. However, you expect that this will require additional
+            training to train physicians in the most health-literate and effective ways to communicate your intervention
+            objectives<br><br>
+        </div>
+        <div class="hidden option" id="b7">
+            <div class="optionBoxes">b</div>You create a team of physicians who are already trained in health literate
+            communication from within your NGO. However, your NGO’s physicians will not be trained in culturally
+            sensitive and competent communication.
+            <br><br>
+        </div>
+
+        <!-- Question #8 -->
+        <div class="hidden" id="q8">
+            To test the effectiveness of the educational sessions in informing Syrian and Iraqi refugee women about
+            self-examination and how to access funded screening opportunities, you create focus groups with local
+            physicians and volunteer refugee women. However, you find that many of the volunteer women did not come out
+            of their sessions with a complete understanding of the need to adhere to annual screening or the services
+            provided to them through your initiative.<br><br>
+            <p class="boldText">How can you better train the physicians who are participating in these sessions to
+                effectively encourage and promote screening?</p>
+        </div>
+        <!-- Option Choices for Question #8 -->
+        <div class="hidden option" id="a8">
+            <div class="optionBoxes">a</div>Provide competency training videos with expert anthropologists and refugee
+            health experts from the AUB and interpreters who understand many of the cultural and social barriers of
+            refugee women in Lebanon.<br><br>
+        </div>
+        <div class="hidden option" id="b8">
+            <div class="optionBoxes">b</div>You call in public health workers from your NGO to train the physicians in
+            health literate communication. In addition, you call in expert anthropologists from America and the UK who
+            can help your team navigate the cultural sensitivities of implementing an intervention with refugees.
+            <br><br>
+        </div>
+
+        <!-- Question #9 -->
+        <div class="hidden" id="q9">
+            After training local physicians in health literate and culturally sensitive communication strategies, you
+            held educational sessions with the Syrian and Iraqi refugee women volunteers in the camp. In these sessions,
+            physicians emphasized the benefits of early screening, of adhering to an annual screening schedule, and of
+            correcting misconceptions about breast cancer burden among refugee women. <br><br>The final component of the
+            intervention is to coordinate a funded screening program for the refugee women to follow through on annual
+            exams. Throughout this time, your NGO has been lobbying your primary partners, the UNHCR and the Ministry of
+            Public Health, to negotiate funding for early screening technologies. However, funds are constrained.
+            <br><br>The two primary early screening procedures available to fund are mammogram screening and clinical
+            breast examination. Mammogram screening has been shown to be more accurate and low-income patients are more
+            likely to respond positively to treatment when diagnosed by mammogram vs clinically or surgically (Ekeh,
+            Alleyne, and Duncan, J Nat’l Med Assoc., 2000). However, mammograms are expensive, at an estimated cost of
+            $25 USD per person in addition to maintenance costs, and would use significant funds (Elias. Bou-Orm, Adib.,
+            Prev Med Rep, 2016). Clinical breast examination (CBE) refers to manual examination by a healthcare worker
+            and has been recommended for low-resource areas without available mammograms (Gutnik et al., JCO Global
+            Onc., 2016). However, incorporating CBE into this intervention would require training a community health
+            worker force in performing CBE and scaling up to meet capacity, which would require significant resources.
+            <br><br>
+            <p class="boldText">What procedure for screening or early detection should you use in your intervention?</p>
+        </div>
+        <!-- Option Choices for Question #9 -->
+        <div class="hidden option" id="a9">
+            <div class="optionBoxes">a</div>You prioritize clinical breast examination (CBE), which is cheaper and has
+            fewer technical requirements. You will focus on training local community health workers to scale up CBEs, as
+            part of the intervention.<br><br>
+        </div>
+        <div class="hidden option" id="b9">
+            <div class="optionBoxes">b</div>Given that Rafic Hariri Hospital already has mammograms, which are more
+            accurate, you advocate for UNHCR and MOPH funding to fully cover the costs for refugee women to receive one
+            annual mammogram .
+            <br><br>
+        </div>
+
+        <!-- Question #10 -->
+        <div class="hidden" id="q10">
+            Now that you are in the screening stage of your intervention, you are checking in with the physicians at
+            Rafic Hariri hospital to see how many of the women who attended educational sessions have gone to receive a
+            mammogram in the month after their session. You are told that only about 50% of the women actually showed up
+            for mammograms. This is concerning, because you’ve spent one year implementing the awareness campaign and
+            educational sessions in order to increase adherence to regular screening. <br><br>
+            <p class="boldText">You are reflecting on what factor you might have missed. How can you determine where
+                your plan went wrong?</p>
+        </div>
+        <!-- Option Choices for Question #10 -->
+        <div class="hidden option" id="a10">
+            <div class="optionBoxes">a</div>You think that refugee women are being prevented by cultural, religious, or
+            social taboos from receiving mammogram screening. <br><br>
+        </div>
+        <div class="hidden option" id="b10">
+            <div class="optionBoxes">b</div>You ask UNHCR field workers to speak with some refugee women volunteers who
+            participated in your focus group sessions to find out what logistical barriers may be preventing women from
+            attending screening appointments.
+            <br><br>
+        </div>
+
+        <!-- Question #11 -->
+        <div class="hidden" id="q11">
+            You find out that you had overlooked a basic logistical problem: refugee women were not being able to get to
+            hospitals. Many women either lacked reliable transportation or couldn’t afford it. Now, you must consider
+            how to provide access to screening for refugee women.<br><br>
+            <p class="boldText">What is the most cost-effective and realistic approach for you to provide access to
+                screening for refugee women who are not able to afford transportation?</p>
+        </div>
+        <!-- Option Choices for Question #11 -->
+        <div class="hidden option" id="a11">
+            <div class="optionBoxes">a</div>You will invest in mobile mammogram units and coordinate with refugee women
+            to provide regular access to this screening.<br><br>
+        </div>
+        <div class="hidden option" id="b11">
+            <div class="optionBoxes">b</div>You will lobby the Ministry of Transport to provide funding for a
+            pre-planned bus schedule, coordinated with both refugee women and physicians. This way women will be able to
+            use the buses to travel in groups, the physicians will be able to manage traffic, and the government can
+            allot a specific budget ahead of time.
+            <br><br>
+        </div>
+
+        <!-- Question #12 -->
+        <div class="hidden" id="q12">
+            One of the refugee women your NGO had interacted with when conducting the needs assessment survey reaches
+            out to your organization. She has late-stage breast cancer but was denied care due to her older age and poor
+            prognosis. She knows End Cancer Now is a well-funded international medical organization, and has requested
+            your help in securing treatment for her.
+            <br><br>
+            Unfortunately, she is not the only one in a situation like this. In low-resource settings, particularly
+            among refugees, there are many cases of individuals who are unable to receive treatment or any help from
+            NGOs because of their late-stage diagnosis or poor prognosis. The UNHCR selectively funds expensive
+            treatment based on the recommendation of the UNHCR Exceptional Care Committee, which often denies care to
+            refugees with poor disease prognosis.
+            <br><br>
+            <p class="boldText">How do you respond to this woman?</p>
+        </div>
+        <!-- Option Choices for Question #12 -->
+        <div class="hidden option" id="a12">
+            <div class="optionBoxes">a</div>You are so moved that you decide to sponsor this woman’s cancer
+            treatment costs through your organization.
+        </div>
+        <div class="hidden option" id="b12">
+            <div class="optionBoxes">b</div>You are moved by this encounter and you try to leverage your organization to
+            lobby the UNHCR commission that funds cancer care for refugees to accept this woman’s case.
+            <br><br>
+        </div>
+        <div class="hidden option" id="c12">
+            <div class="optionBoxes">c</div>You can’t do anything yourself except refer her to a local oncologist you
+            are working with to discuss treatment options for her. Moved by this experience, you decide to pursue
+            chemotherapy subsidies by the Ministry and UNHCR for women participating in the intervention, if they are
+            adhering to their yearly mammogram schedules.<br>
+        </div>
+
+        <!-- Question #13 -->
+        <div class="hidden" id="q13">
+            ……It has now been two years since you started your intervention. You have just followed up on each of the
+            relevant check-points. Your intervention was successful! A second iteration of the awareness campaign and
+            educational sessions was implemented, one year after the first. Over the last year, over 80% of Syrian and
+            Iraqi refugee women who had received educational sessions and vouchers went for a mammography screening. In
+            addition, over 30% of the new breast cancer cases diagnosed among Syrian and Iraqi women were detected
+            through self-examination. Given the one-year success of your intervention, the Ministry has asked you to
+            expand your intervention to other camp settings beyond Lebanon. the UNHCR Exceptional Care Committee, which
+            often denies care to
+            refugees with poor disease prognosis.
+            <br><br>
+        </div>
+        <div class="hidden" id="beirutExplosion">
+            <p class="boldText">*a shocking explosion goes off in Beirut.*</p>
+            <p>Everything changes. Just as you were preparing to scale up
+                your intervention to the Baqaa district, an explosion goes off in Beirut. All emergency funds are being
+                redirected to this humanitarian crisis.
+            </p>
+            <p class="boldText">You are now faced with a dilemma that humanitarian program coordinators struggle
+                with
+                often in crisis areas. Do you continue to fight for the sustenance of your chronic disease intervention
+                when there are people in Beirut who need emergency treatment right away? Why?
+            </p>
+        </div>
+
+        <!-- Question #15 -->
+        <div class="hidden" id="q15">
+            Now that you are meeting with your stakeholders, you must finalize your intervention’s objectives. However,
+            your stakeholders at the table have different goals. The WHO representative is emphasizing the WHO’s success
+            in running breast cancer awareness campaigns in Lebanon previously, and supports a similarly robust but
+            scaled up awareness campaign now. The Ministry is considering purchasing a new breast cancer screening
+            technology as a widely publicized addition to the Rafic Hariri Hospital, and wants to support an emphasis on
+            diagnostics. Your local epidemiologist consultant instead advocates for a needs assessment survey to be done
+            before proceeding with any of these interventions.
+            <br><br>
+            <p class="boldText">What is your next step?</p>
+        </div>
+        <!-- Option Choices for Question #15 -->
+        <div class="hidden option" id="a15">
+            <div class="optionBoxes">a</div>You agree with the Ministry, that you should allocate a significant portion
+            of your funds to purchasing new screening technologies and select refugee women with life-threatening cases
+            to receive emergency care.
+        </div>
+        <div class="hidden option" id="b15">
+            <div class="optionBoxes">b</div>You decide to go with the epidemiologist’s suggestion and conduct a needs
+            assessment of Syrian and Iraqi women in the refugee camp.
+            <br><br>
+        </div>
+        <div class="hidden option" id="c15">
+            <div class="optionBoxes">c</div>You agree with the WHO, that the intervention should consist of a single
+            awareness campaign.<br>
+        </div>
+
+        <!-- Question #16 -->
+        <div class="hidden" id="q16">
+            Now, you are trying to put together a team to conduct a needs assessment of Syrian and Iraqi women in
+            refugee camps in Beirut. However, when you approach your WHO representative, she says that UNHCR deals
+            directly with refugees to finance and coordinate their health services. You realize that the WHO may not be
+            the right partner for an intervention about health services access and funding for refugees.
+            <br><br>
+            <p class="boldText">What do you decide to do about your potential primary partner, the WHO?</p>
+        </div>
+        <!-- Option Choices for Question #16 -->
+        <div class="hidden option" id="a16">
+            <div class="optionBoxes">a</div>You decide to approach UNHCR to become your primary partner instead, because
+            of UNHCR’s reach and existing relationship and infrastructure dealing directly with the health needs of and
+            services for refugees.
+        </div>
+        <div class="hidden option" id="b16">
+            <div class="optionBoxes">b</div>You decide to go with the epidemiologist’s suggestion and conduct a needs
+            assessment of Syrian and Iraqi women in the refugee camp. You decide to abandon the needs assessment and
+            continue partnering primarily with the WHO to run an awareness campaign, despite the logistical difficulties
+            with not having UNHCR facilitate your health services coordination.
+            <br><br>
+        </div>
+
+        <!-- Question #17 -->
+        <div class="hidden" id="q17">
+            You are approached by an angry Ministry representative who criticizes your intervention strategy. “Awareness
+            campaigns have been done multiple times before in Lebanon. But what health metrics are you helping us
+            improve,” he asks.
+            <br><br>
+            You realize that your NGO’s hands are tied from exploring further options until you partner with the UNHCR,
+            which is the primary organization working with refugee health in Lebanon, to consider funding paths to
+            coordinate potential screening or early detection interventions that also meet the Ministry’s goals. You
+            decide to meet with the UNHCR.
+
+            <br><br>
+            <p class="boldText">At this stage, what should you do?</p>
+        </div>
+        <!-- Option Choices for Question #17 -->
+        <div class="hidden option" id="a17">
+            <div class="optionBoxes">a</div>In good faith, approach UNHCR to start over and conduct a needs assessment.
+            You will commit to listening to and working within local experts’ advice.
+        </div>
+        <div class="hidden option" id="b17">
+            <div class="optionBoxes">b</div>It will be too difficult for you to bring in UNHCR, so you decide to rely
+            only on the WHO as your primary NGO sponsor, and go forward with an awareness campaign.
+            <br><br>
+        </div>
+
+        <!-- Question #18 -->
+        <div class="hidden" id="q18">
+            Given the Ministry’s strong push, you have decided to use your funding to purchase new screening
+            technologies and select a limited number of refugee women for emergency care. However, an advisor from the
+            AUB-Global Health Initiative calls you expressing his concern in the usefulness of this initiative. He
+            believes it will turn into a high-profile Ministry public relations stunt, without providing important
+            behavioral or health changes among Syrian and Iraqi refugee women. He suggests that you use
+            <a href="https://ascopubs.org/doi/pdf/10.1200/EDBK_279693">resource-stratified guidelines for cancer care in
+                a low-resource country</a> to plan out your initiative. He
+            also seconds the epidemiologist’s suggestion to do a needs assessment first, but emphasizes the need to
+            partner.
+
+            <br><br>
+            <p class="boldText">Given the suggestions you were given, what do you do?</p>
+        </div>
+        <!-- Option Choices for Question #18 -->
+        <div class="hidden option" id="a18">
+            <div class="optionBoxes">a</div>You decide to work with UNHCR and local epidemiologists to conduct a needs
+            assessment of a local refugee camp.
+        </div>
+        <div class="hidden option" id="b18">
+            <div class="optionBoxes">b</div>You go against the local epidemiologist’s and AUB-Global Health expert’s
+            advice, and continue with a Ministry funded plan to purchase new equipment for the Rafic Hariri Hospital.
+            <br><br>
+        </div>
+
+
+        <!-- Question #19 -->
+        <div class="hidden" id="q19">
+            As a result of your refusal to listen to multiple local health experts’ advice, two AUB-Global Health
+            professors have written a scathing editorial about you in a major Lebanese news outlet, publicly condemning
+            your partnership with the Ministry as self-serving. As a result, local agencies are beginning to sideline
+            you compared to other NGOs working in Beirut.
+            <br><br>
+            <p class="boldText">At this stage, what should you do?</p>
+        </div>
+        <!-- Option Choices for Question #18 -->
+        <div class="hidden option" id="a19">
+            <div class="optionBoxes">a</div>In good faith, approach AUB-Global Health and UNHCR to start over and
+            conduct a needs assessment. You will commit to listening to and working within local experts’ advice.
+        </div>
+        <div class="hidden option" id="b19">
+            <div class="optionBoxes">b</div>You have decided to prematurely end your intervention and you pull out.
+            <br><br>
+        </div>
+
+        <!-- Question #20-->
+        <div class="hidden" id="q20">
+            Ministry officials do not agree with this choice, as they want to provide services that refugee women can
+            use. They tell you that if there is not a screening or early detection service, they will have a difficult
+            time collecting support to fund you.
+            <br><br>
+            <p class="boldText">At this stage, what should you do?</p>
+        </div>
+        <!-- Option Choices for Question #20 -->
+        <div class="hidden option" id="a20">
+            <div class="optionBoxes">a</div>Given the objectives of UNHCR and the Ministry, and the results of your
+            needs assessment, you settle on a three part intervention: one, an awareness campaign to inform refugee
+            women about breast cancer; two, educational sessions with local physicians informing refugee women about
+            self-examination and opportunities for early screening; three, negotiate with the UNHCR and the Ministry to
+            fund free yearly screening or early detection for refugee women over 35.
+        </div>
+        <div class="hidden option" id="b20">
+            <div class="optionBoxes">b</div>Nonetheless, you decide to go forward with an awareness campaign only.
+            <br><br>
+        </div>
+
+        <!-- Question #21-->
+        <div class="hidden" id="q21">
+            UNHCR representatives do not agree with this choice, as they want to emphasize sustainable behavior- and
+            education-based interventions too that will create longstanding change in refugee communities. They tell you
+            that if there is not an educational or awareness component, they will have a difficult time collecting
+            support to fund you.
+            <br><br>
+            <p class="boldText">At this stage, what should you do?</p>
+        </div>
+          <!-- Option Choices for Question #21 -->
+        <div class="hidden option" id="a21">
+            <div class="optionBoxes">a</div>Given the objectives of UNHCR and the Ministry, and the results of your
+            needs assessment, you settle on a three part intervention: one, an awareness campaign to inform refugee
+            women about breast cancer; two, educational sessions with local physicians informing refugee women about
+            self-examination and opportunities for early screening; three, negotiate with the UNHCR and the Ministry to
+            fund free yearly screening or early detection for refugee women over 35.
+        </div>
+        <div class="hidden option" id="b21">
+            <div class="optionBoxes">b</div>You have decided to prematurely end your intervention and you pull out.
+            <br><br>
+        </div>
+
+        <!-- Question #22-->
+        <div class="hidden" id="q22">
+            After running the awareness campaign in a focus group, your preliminary data shows that you only reached
+            about 40% of the target population. You realize that access to TVs or radio satellite communication may be
+            limited in a refugee camp setting.
+            <br><br>
+            <p class="boldText">Given your data, what is the best delivery method for your awareness campaign?
+            </p>
+        </div>
+        <!-- Option Choices for Question #22 -->
+        <div class="hidden option" id="a22">
+            <div class="optionBoxes">a</div>Nonetheless, you decide to go forward with a TV awareness campaign.
+        </div>
+        <div class="hidden option" id="b22">
+            <div class="optionBoxes">b</div>App: you want to design a convenient smartphone application that will allow
+            refugee families to access any of the information and videos they want to see in private, at their luxury.
+            <br><br>
+        </div>
+        <div class="hidden option" id="c22">
+            <div class="optionBoxes">c</div>WhatsApp and Facebook: you will spread educational videos through WhatsApp
+            messages and Facebook posts. You believe this will be the most accessible method for families to receive
+            educational materials directly on their phones. You expect that most refugee families will have a smartphone
+            to contact their family members back home. <br>
+        </div>
+
+        <!-- Question #23-->
+        <div class="hidden" id="q23">
+            After running the awareness campaign in a focus group, your preliminary data shows that you only reached about 25% of the target population. You realize that an application may just be creating a secondary barrier for refugee families to navigate.
+            <br><br>
+            <p class="boldText">Given your data, what is the best delivery method for your awareness campaign?
+            </p>
+        </div>
+        <!-- Option Choices for Question #23 -->
+        <div class="hidden option" id="a23">
+            <div class="optionBoxes">a</div>Nonetheless, you decide to go forward with an App.
+        </div>
+        <div class="hidden option" id="b23">
+            <div class="optionBoxes">b</div>WhatsApp and Facebook: you will spread educational videos through WhatsApp messages and Facebook posts. You believe this will be the most accessible method for families to receive educational materials directly on their phones. You expect that most refugee families will have a smartphone to contact their family members back home.  
+            <br><br>
+        </div>
+
+        <!-- Question #24-->
+        <div class="hidden" id="q24">
+            Despite including the additional video with Lebanese politicians confirming your NGO’s credibility and urging, with an oncologist, refugee families to attend the educational sessions and learn about breast cancer, you are still not receiving sign-ups. You suspect this is because Lebanese politicians lack trust among the diverse cultural and religious groups of refugees.
+            <br><br>
+            <p class="boldText">Given your prediction, what is the best delivery method for your awareness campaign?
+            </p>
+        </div>
+        <!-- Option Choices for Question #24 -->
+        <div class="hidden option" id="a24">
+            <div class="optionBoxes">a</div>Create an additional video, this time including a local cultural leader or Sheikh, who explains the importance of understanding the risks of breast cancer and how self-examination can save lives.
+        </div>
+        <div class="hidden option" id="b24">
+            <div class="optionBoxes">b</div>Nonetheless, you decide to go forward with an App.
+        </div>
+
+        <!-- Question #25-->
+        <div class="hidden" id="q25">
+           Your NGO seems to have lost credibility among refugee families. You failed to receive support from enough Syrian and Iraqi refugee women to meet the minimum benchmark set by UNHCR and the Ministry. They have lost confidence and are terminating their contract with you.
+        </div>
+
+         <!-- Question #26-->
+        <div class="hidden" id="q26">
+           Before your NGO’s physicians arrive, a UNHCR interpreter asks you to consider whether there will be significant social and cultural barriers between your NGO’s physicians and the Syrian and Iraqi refugee women they will be addressing. 
+            <br><br>
+            <p class="boldText">What is the best way to avoid this obstacle?
+            </p>
+        </div>
+        <!-- Option Choices for Question #26 -->
+        <div class="hidden option" id="a26">
+            <div class="optionBoxes">a</div>Instead, you decide to defer to local physicians from Rafic Hariri Hospital, who have worked with refugee women in the past and are well trusted by refugee families. 
+        </div>
+         <div class="hidden option" id="b26">
+            <div class="optionBoxes">b</div>Nonetheless, you decide to go forward your team’s physicians with including any Rafic Hariri Hospital physicians.
+        </div>
+
+         <!-- Question #27-->
+        <div class="hidden" id="q27">
+           Your NGO seems to have lost credibility among refugee families. You failed to receive support from enough Syrian and Iraqi refugee women to meet the minimum benchmark set by UNHCR and the Ministry. They have lost confidence and are terminating their contract with you.
+        </div>
+
+        <!-- Question #28-->
+        <div class="hidden" id="q23">
+           UNHCR and Ministry representatives are disappointed in your decision, because it is costly to fly in experts from abroad, especially when the capacity for online training exists. You concede that the most cost-effective option would be to create training videos for physicians, which would take neither significant time nor resources to make.
+            <br><br>
+        </div>
+
+         <!-- Question #29-->
+        <div class="hidden" id="q29">
+           While the CBE seems cost-effective at first and has increasingly been promoted as an alternative to mammograms where resources are scarce, you are reminded that Beirut, specifically Rafic Hariri Hospital, does have mammogram screenings available and provides limited funding for a number of refugee women. Instead, to run an effective CBE intervention, you will need to train local nurses or volunteer refugees with a medical background in performing CBEs. 
+            <br><br>
+            <p class="boldText">How will you proceed?
+            </p>
+        </div>
+        <!-- Option Choices for Question #29 -->
+        <div class="hidden option" id="a29">
+            <div class="optionBoxes">a</div>Given that mammograms are already available and that a CBE intervention will require extensive capacity-building, you decide to advocate for mammogram screening, funded by UNHCR and the Ministry.
+        </div>
+         <div class="hidden option" id="b29">
+            <div class="optionBoxes">b</div>You decide to continue with a CBE intervention, whereby you will train nurses and refugees with medical backgrounds to perform CBEs.
+        </div>
+
+        <!-- Question #30-->
+        <div class="hidden" id="q23">
+           A preliminary budget for a CBE-based intervention far exceeds the current capacity and timeline of your intervention, as it will require you to develop an entirely new training program. The Ministry has denied your proposal. Therefore, you will go forward with a mammogram screening service at Rafic Hariri Hospital.
+            <br><br>
+        </div>
+
+        <!-- Question #31-->
+        <div class="hidden" id="q31">
+          To address this, you produce another video with a different prominent community leader and disseminate it widely. Despite a consistent number of new visits by Syrian and Iraqi refugee women to your educational sessions, there is no net increase in hospital visits for mammograms.
+            <br><br>
+            <p class="boldText">What should you do now?
+            </p>
+        </div>
+        <!-- Option Choices for Question #31 -->
+        <div class="hidden option" id="a31">
+            <div class="optionBoxes">a</div>You may have reached the natural maximum attendees and can’t pressure anyone else to utilize your services.
+        </div>
+         <div class="hidden option" id="b31">
+            <div class="optionBoxes">b</div>You ask UNHCR field workers to speak with the refugee women volunteers who attended your focus group sessions to find out what logistical barriers may be preventing women from attending their sessions.
+        </div>
+
+        <!-- Question #32-->
+        <div class="hidden" id="q32">
+           As you prepare to equip mobile mammogram units, you face several logistical difficulties. Rafic Hariri Hospital does not want to donate a mammogram, due to its high on-site volume. In addition, local physicians are pushing back, saying that there isn’t sufficient data on the advantages and disadvantages of offering mobile mammography in a refugee setting. Given the opposition, you are unable to go forward with this. 
+            <br><br>
+        </div>
+
+        <!-- Question #33-->
+        <div class="hidden" id="q33">
+           The UNHCR representatives are taken aback by your advocacy on behalf of this woman. They explain that the UNHCR Exceptional Care Committee generally doesn’t accept cases that have extremely poor prognoses, and that they cannot make an exception because you are pushing for it.
+            <br><br>
+            <p class="boldText">What do you do?
+            </p>
+        </div>
+        <!-- Option Choices for Question #33 -->
+        <div class="hidden option" id="a33">
+            <div class="optionBoxes">a</div>You decide to refer her to a local oncologist y to discuss treatment options for her. Moved by this experience, you are now trying to negotiate funding from the Ministry for subsidized chemotherapy if the women are adhering to their mammogram and /or chemotherapy schedules.
+        </div>
+         <div class="hidden option" id="b33">
+            <div class="optionBoxes">b</div>You decide to refer her to a local oncologist y to discuss treatment options for her. Moved by this experience, you are now trying to negotiate funding from the Ministry for subsidized chemotherapy if the women are adhering to their mammogram and /or chemotherapy schedules.
+        </div>
+
+        <!-- Question #34-->
+        <div class="hidden" id="q34">
+           You declare that you will fund this woman’s treatment costs. As a result, UNHCR informs you that you are acting in violation of its conflict-of-interests policy, because you are its NGO partner and cannot take special interest in any one beneficiary of your intervention.
+            <br><br>
+        </div>
+
+        <!-- Question #35-->
+        <div class="hidden" id="q35">
+           Ministry officials do not agree with this choice, as they want to provide services that refugee women can use. They tell you that if there is not a screening or early detection service, they will have a difficult time collecting support to fund you. The Ministry officials call in another local epidemiologist, who recommends that you conduct a needs assessment first.
+            <br><br>
+            <p class="boldText">At this stage, what should you do?
+            </p>
+        </div>
+        <!-- Option Choices for Question #35 -->
+        <div class="hidden option" id="a35">
+            <div class="optionBoxes">a</div>You decide to continue with your awareness campaign intervention, without a needs assessment.
+        </div>
+         <div class="hidden option" id="b35">
+            <div class="optionBoxes">b</div>You decide to work with the Ministry, UNHCR, and local epidemiologists to conduct a needs assessment of a local refugee camp.
+        </div>
+
+          <!-- Question #35-5-->
+        <div class="hidden" id="q35-5">
+          As a result of your refusal to conduct a needs assessment or work towards its goals, the MOPH has withdrawn all support from your organization. 
+            <br><br>
+        </div>
+         <div class="hidden option" id="a35-5">
+            <div class="optionBoxes">a</div>You will continue without Ministry support.
+        </div>
+         <div class="hidden option" id="b35-5">
+            <div class="optionBoxes">b</div>In good faith, you approach local AUB epidemiologists and UNHCR to conduct a needs assessment. You will commit to working within local experts’ advice.
+        </div>
+ 
+        <!-- Question #36-->
+        <div class="hidden" id="q36">
+           As a result of your refusal to work within its goals, the MOPH has withdrawn its support from you. Given the MOPH’s actions, UNHCR has also stated that it will not work with your organization. Without either of these governmental organizations, you are unable to raise the necessary funds to organize an intervention. You are forced to pull out.
+            <br><br>
+        </div>
+
+         <!-- Question #37-->
+        <div class="hidden" id="q37">
+           Given the MOPH’s actions, the Ministry of Transportation has also stated that it will not work with your organization. Without either of these governmental organizations, you are unable to raise the necessary funds to organize an intervention. You are forced to pull out.
+           <br><br>
+        </div>
+
+        <!-- Question #38-->
+        <div class="hidden" id="q38">
+          UNHCR and AUB global health experts criticize your intervention objectives for failing to address, despite the needs assessment, what they see as the most strategic breast cancer intervention: early screening and detection. They argue that a chemotherapy treatment strategy is already in place, and a more cost-effective model cannot be implemented within this intervention’s budget. They urge you to commit to local expertise and work with UNHCR to develop a strategy aimed at the results of the needs assessment.
+           <br><br>
+           You decide to conduct a three part intervention: one, an awareness campaign to inform refugee women about breast cancer; two, educational sessions with local physicians informing refugee women about self-examination and opportunities for early screening; three, negotiate with the UNHCR and the Ministry to fund free yearly screening or early detection for refugee women over 35.
+        </div>
+        <!-- Question #39-->
+        <div class="hidden" id="q39">
+         This is unlikely, since the responses to your awareness and educational campaign were significant. You ask UNHCR field workers to speak with some of the refugee women volunteers who participated in your focus groups about what obstacles other women might be facing. Several of them point out that transportation is difficult for them, as they don’t have access to or can’t afford transportation to the hospital. 
+        </div>
+    </div>
+    
+    <hr>
+    <!-- FOOTER -->
+    <footer class="container">
+        <!-- <p class="float-right"><a href="#">Back to top</a></p> -->
+        <p id= "footerId">2020 Research Project, Yale School of Public Health. &middot; <a href="/references" target="_blank">References</a> &middot; </p> 
+                {{! <a href="about.html">About</a> }}
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,358 @@
+* {
+    margin: 0px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+p {
+    line-height: 1.25;
+}
+
+footer {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: #5a5a5a;
+}
+
+#footerId{
+    margin-left: 75px;
+}
+
+hr {
+    width: 75%;
+    margin: auto;
+}
+
+a:link {
+    color: blue;
+    font-weight: bold;
+}
+
+a:hover {
+    color: darkblue;
+}
+
+.boldTxt {
+    font-weight: bold;
+}
+
+.boldText {
+    font-weight: bold;
+    text-align: center;
+}
+
+.simulationHeader {
+    width: 100%;
+    background-color: #dfe8e0;
+    /* text-align: center; */
+    /* color: white; */
+    height: 50px;
+    font-size: 2em;
+    /* margin: auto; */
+    /* font-weight: bold; */
+    /* border-bottom: solid #3d423d; */
+    /* border-width: thinmedium; */
+    padding-top: auto;
+    margin-bottom: 85px;
+}
+
+.gameBody {
+    background-color: cornflowerblue;
+    background-image: url("../images/map-lebanon.png");
+    border-radius: 5px;
+    height: 620px;
+    width: 850px;
+    margin: auto;
+    overflow-x: auto;
+    margin-bottom: 100px;
+}
+
+.displayMessage {
+    box-sizing: content-box;
+    margin: 60px auto;
+    width: 650px;
+    height: 300px;
+    background-color: white;
+    position: relative;
+    border-radius: 5px;
+    padding: 35px 20px 40px;
+    overflow: auto;
+    font-size: 16px;
+    /* font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif; */
+}
+
+.highlight {
+    background-color: yellow;
+    color: #556B2F;
+    opacity: 0.70;
+}
+
+.optionBoxes {
+    position: relative;
+    height: 30px;
+    width: 25px;
+    background-color: yellowgreen;
+    text-align: center;
+    color: white;
+    padding: 3px;
+    border-radius: 5px;
+    border: solid 2px;
+    margin-right: 15px;
+
+}
+
+.option {
+    /* position: relative; */
+    display: inline-flex;
+}
+
+/* .actionButton {
+    position: relative;
+    border-radius: 5px;
+    z-index: 1;
+}
+ */
+
+#continueButton {
+    position: relative;
+    border-radius: 5px;
+    margin: auto;
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: #556B2F;
+    border-color: #3d423d;
+    color: white;
+    bottom: 40px;
+    left: 30px;
+}
+
+#submitButton {
+    /* position: absolute; */
+    border-radius: 5px;
+    /* margin: auto; */
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: #556B2F;
+    border-color: #3d423d;
+    color: white;
+    bottom: 40px;
+    left: 45px;
+}
+
+#prevButton {
+    position: relative;
+    border-radius: 5px;
+    /* margin: auto; */
+    font-size: 18px;
+    padding: 5px 10px;
+    background-color: #556B2F;
+    border-color: #3d423d;
+    color: white;
+    bottom: 40px;
+    left: 30px;
+    /* left: 150px; */
+}
+
+#startButton {
+    position: relative;
+    border-radius: 7px;
+    margin: auto;
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: #556B2F;
+    border-color: #3d423d;
+    color: white;
+    /* margin-left: 255px; */
+    left: 200px;
+    bottom: 40px;
+}
+
+#btn-finish {
+    position: relative;
+    border-radius: 7px;
+    margin: auto;
+    font-size: 20px;
+    padding: 5px 10px;
+    background-color: #556B2F;
+    border-color: #3d423d;
+    color: white;
+    /* margin-left: 255px; */
+    left: 200px;
+    bottom: 40px;
+}
+
+.hidden {
+    display: none;
+}
+
+#gameHeader {
+    margin-top: 10px;
+    background-color: #556B2F;
+    border-radius: 5px;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    font-size: 2em;
+    border: solid #3d423d;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+#gameTitle {
+    color: white;
+    padding-left: 25px;
+    padding-top: 25px;
+    text-align: center;
+}
+
+#text {
+    width: 100%;
+}
+
+.icon {
+    /* position: auto; */
+    margin: 0px 10px;
+    height: 50px;
+    width: 50px;
+    bottom: 40px;
+    left: 20px;
+    color: green;
+}
+
+.blur {
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    -moz-filter: blur(2px);
+    -o-filter: blur(2px);
+    -ms-filter: blur(2px);
+}
+
+.clue {
+    width: 400px;
+    height: 300px;
+    left: 150px;
+    top: 35px;
+    border: solid;
+    border-radius: 5px;
+    padding: 15px;
+    overflow: auto;
+    text-align: center;
+    background-color: #cad6dd;
+    border-width: thin-medium;
+    position: absolute;
+    z-index: 1;
+}
+
+.help {
+    width: 300px;
+    height: 400px;
+    left: 250px;
+    top: 110px;
+    border: solid;
+    border-radius: 5px;
+    border-color: #556B2F;
+    overflow: auto;
+    padding: 15px;
+    background-color: #dfe8e0;
+    border-width: thin-medium;
+    position: absolute;
+    z-index: 1;
+}
+
+#helpHeader {
+    font-weight: bold;
+    /* background-color: white; */
+}
+
+#gameFooter {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+#iconBar {
+    width: 100%;
+    border-width: 3px;
+    margin: 15px auto;
+}
+
+#arrow {
+    position: relative;
+    float: right;
+    top: 75px;
+}
+
+.imageLink {
+    border-radius: 10px;
+}
+
+.imageLink:hover {
+    opacity: 0.65;
+    border: solid;
+    border-color: darkcyan;
+}
+
+.bottomBar {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+}
+
+.choiceAnalysis {
+    position: absolute;
+    margin: auto;
+    width: 75%;
+    /* height: 55%; */
+    /* display: inline-flexbox; */
+    height: 0%;
+    overflow: auto;
+    left: 100px;
+    bottom: 115px;
+    border-radius: 5px;
+    background-color: #556B2F;
+    /* text-align: center; */
+    color: white;
+    /* padding: 20px; */
+    font-size: 18px;
+    z-index: 1;
+}
+
+.closeIcon {
+    position: relative;
+    display: inline-flex;
+    text-align: left;
+    /* padding: 15px; */
+    margin: 25px;
+}
+
+.centerText {
+    text-align: center;
+    padding-right: 15px;
+}
+
+.noteWrapper {
+    padding: 10px 5px;
+}
+
+.borderStyle {
+    border: solid #556B2F;
+    border-width: 3px;
+    padding: 5px;
+}
+
+.popupBox {
+    position: absolute;
+    z-index: 1;
+    width: 230px;
+    background-color: #cad6dd;
+    border-radius: 20px;
+    height: 0px;
+    font-size: 17px;
+    /* border: solid #b2c1b4; */
+    text-align: center;
+    /* border-width: 5px; */
+    /* padding: 0px 10px; */
+}
+
+.popupText {
+    color: #228B22;
+
+}
